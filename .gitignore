@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!.gitmodules
+!README.md
+!LICENSE
+!.vscode
+!.vscode/**
