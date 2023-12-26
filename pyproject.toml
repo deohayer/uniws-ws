@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "uniws"
+description = "A Python framework for uniform workspace CLI"
+version = "0.0.0"
+readme = "uniws/README.md"
+license = {file = "uniws/LICENSE"}
+requires-python = ">= 3.6"
+dependencies = [
+  'argapp',
+]
+authors = [
+  {name = "Volodymyr Zakalyk", email = "volodymyr.zakalyk@gmail.com"},
+]
+maintainers = [
+  {name = "Volodymyr Zakalyk", email = "volodymyr.zakalyk@gmail.com"},
+]
+classifiers = [
+  "Development Status :: 1 - Planning",
+
+  "Intended Audience :: Developers",
+
+  "Topic :: Software Development",
+
+  "License :: OSI Approved :: MIT License",
+
+  "Operating System :: POSIX :: Linux",
+
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+]
+keywords = [
+  "cli",
+  "development",
+  "workspace",
+]
+
+[project.urls]
+Repository = "https://github.com/deohayer/uniws.git"
+
+[tool.hatch.build.targets.wheel]
+ignore-vcs = true
+include = [
+  "uniws/LICENSE",
+  "uniws/README.md",
+]

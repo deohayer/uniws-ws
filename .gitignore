@@ -6,3 +6,6 @@
 !LICENSE
 !.vscode
 !.vscode/**
+
+!release.sh
+!pyproject.toml
