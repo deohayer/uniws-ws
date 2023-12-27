@@ -8,5 +8,6 @@
 !.vscode/**
 
 !uniws
+!install.sh
 !release.sh
 !pyproject.toml
