@@ -49,6 +49,27 @@ Repository = "https://github.com/deohayer/uniws.git"
 [tool.hatch.build.targets.wheel]
 ignore-vcs = true
 include = [
+  "uniws/*.py",
   "uniws/LICENSE",
   "uniws/README.md",
 ]
+
+[project.scripts]
+uniws = "uniws.uniws:uniws"
+uha = "uniws.uniws:uha"
+uhd = "uniws.uniws:uhd"
+uh0 = "uniws.uniws:uh0"
+uh1 = "uniws.uniws:uh1"
+uhs = "uniws.uniws:uhs"
+uhg = "uniws.uniws:uhg"
+uhp = "uniws.uniws:uhp"
+uhw = "uniws.uniws:uhw"
+usf = "uniws.uniws:usf"
+usp = "uniws.uniws:usp"
+usb = "uniws.uniws:usb"
+usi = "uniws.uniws:usi"
+ust = "uniws.uniws:ust"
+usd = "uniws.uniws:usd"
+usc = "uniws.uniws:usc"
+usr = "uniws.uniws:usr"
+usw = "uniws.uniws:usw"
