@@ -1,0 +1,3 @@
+[submodule "uniws"]
+	path = uniws
+	url = git@github.com:deohayer/uniws.git

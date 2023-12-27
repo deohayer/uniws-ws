@@ -3,16 +3,15 @@
 set -e
 
 # Push the tag.
-rm -rf release
-mkdir -p release
-git clone git@github.com:deohayer/uniws.git release/uniws
-git -C release/uniws tag $1
-git -C release/uniws push --tags
+git -C uniws checkout main
+git checkout main
+git -C uniws tag $1
 git tag $1
+git -C uniws push --tags
 git push --tags
 
 # Push the wheel.
-cp pyproject.toml release/pyproject.toml
-cd release
+rm -rf dist
 python3 -m build -wn .
 twine upload -r pypi dist/*
+rm -rf dist
