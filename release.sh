@@ -2,6 +2,10 @@
 
 set -e
 
+if [[ -z "$1" ]]; then
+    echo "Version is not provided.";
+fi
+
 # Push the tag.
 git -C uniws checkout main
 git checkout main
