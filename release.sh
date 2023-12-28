@@ -8,7 +8,9 @@ fi
 
 # Push the tag.
 git -C uniws checkout main
+git -C uniws pull
 git checkout main
+git pull
 git -C uniws tag $1
 git tag $1
 git -C uniws push --tags
