@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/uniws/template/.uniws"
+    ]
+}
