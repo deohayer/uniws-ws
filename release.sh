@@ -4,6 +4,7 @@ set -e
 
 if [[ -z "$1" ]]; then
     echo "Version is not provided.";
+    exit 1
 fi
 
 # Push the tag.
