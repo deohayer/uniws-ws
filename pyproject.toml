@@ -49,6 +49,7 @@ Repository = "https://github.com/deohayer/uniws.git"
 [tool.hatch.build.targets.wheel]
 ignore-vcs = true
 include = [
+  "uniws/template",
   "uniws/*.py",
   "uniws/LICENSE",
   "uniws/README.md",
