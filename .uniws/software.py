@@ -41,6 +41,7 @@ class SoftwareUniws(Software):
         tmp = f'{root}/tmp'
         repo = f'{tmp}/uniws'
         sh(f'true'
+           f' && rm -rf {root}'
            f' && git clone'
            f'      --recurse-submodules'
            f'      --branch main'
