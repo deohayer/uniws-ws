@@ -18,6 +18,3 @@
 !LICENSE
 !.vscode
 !.vscode/**
-!install.sh
-!release.sh
-!pyproject.toml
