@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "uniws"
-description = "A Python framework for uniform workspace CLI"
-version = "0.3.1"
+description = "Python CLI and API for a uniform workspace"
+version = "0.4.0"
 readme = "uniws/README.md"
 license = {file = "uniws/LICENSE"}
 requires-python = ">= 3.6"
 dependencies = [
-  'argapp',
+  'argapp >= 0.5.0',
 ]
 authors = [
   {name = "Volodymyr Zakalyk", email = "volodymyr.zakalyk@gmail.com"},
@@ -39,6 +39,7 @@ classifiers = [
 ]
 keywords = [
   "cli",
+  "api",
   "development",
   "workspace",
 ]
@@ -57,12 +58,13 @@ include = [
 
 [project.scripts]
 uniws = "uniws.uniws:uniws"
-uhu = "uniws.uniws:uhu"
-uho = "uniws.uniws:uho"
-uhs = "uniws.uniws:uhs"
-uhg = "uniws.uniws:uhg"
+uhc = "uniws.uniws:uhc"
 uhp = "uniws.uniws:uhp"
+uhu = "uniws.uniws:uhu"
+uhd = "uniws.uniws:uhd"
+uhs = "uniws.uniws:uhs"
 uhw = "uniws.uniws:uhw"
+uha = "uniws.uniws:uha"
 usf = "uniws.uniws:usf"
 usb = "uniws.uniws:usb"
 usi = "uniws.uniws:usi"
@@ -70,3 +72,4 @@ ust = "uniws.uniws:ust"
 usr = "uniws.uniws:usr"
 usc = "uniws.uniws:usc"
 usp = "uniws.uniws:usp"
+usa = "uniws.uniws:usa"

@@ -3,39 +3,54 @@ from uniws import *
 
 
 def software() -> 'list[Software]':
-    '''
-    Return a list of Software.
-
-    Returns:
-     * list[Software], the list of Software to manipulate.
-    '''
-    result = [SoftwareUniws()]
-    return result
+    return [Workspace()]
 
 
-class SoftwareUniws(Software):
+class Workspace(Software):
     def __init__(self) -> 'None':
-        super().__init__('uniws', 'Work with uniws.')
-        self.root = DIR_UWS
-        self.repo = f'{DIR_TMP}/uniws'
-        self.toml = f'{DIR_ETC}/pyproject.toml'
+        super().__init__(name='uniws',
+                         help='Work with uniws.')
+        self.fetch = Fetch()
+        self.install = Install()
+        self.release = Release()
 
-    def fetch(self) -> 'None':
+
+class Fetch(App):
+    def __call__(
+        self,
+        args: 'dict[Arg]' = None,
+        apps: 'list[App]' = None,
+    ) -> 'None':
+        super().__call__(args, apps)
         sh(f'true'
-           f' && git -C {self.root} checkout develop'
-           f' && git -C {self.root} submodule update --init'
-           f' && git -C {self.repo} checkout develop'
+           f' && git -C {DIR_UWS} checkout develop'
+           f' && git -C {DIR_UWS} submodule update --init'
+           f' && git -C {DIR_TMP}/uniws checkout develop'
            f';')
 
-    def install(self) -> 'None':
+
+class Install(App):
+    def __call__(
+        self,
+        args: 'dict[Arg]' = None,
+        apps: 'list[App]' = None,
+    ) -> 'None':
+        super().__call__(args, apps)
         sh(f'true'
            f' && rm -rf {DIR_TMP}/dist'
            f' && python3 -m build -wn {DIR_TMP}'
            f' && pip3 install --no-deps --force-reinstall {DIR_TMP}/dist/*'
            f';')
 
-    def release(self) -> 'None':
-        config = toml.load(self.toml)
+
+class Release(App):
+    def __call__(
+        self,
+        args: 'dict[Arg]' = None,
+        apps: 'list[App]' = None,
+    ) -> 'None':
+        super().__call__(args, apps)
+        config = toml.load(f'{DIR_TMP}/pyproject.toml')
         version = config['project']['version']
         root = f'{DIR_TMP}/uniws-ws'
         tmp = f'{root}/tmp'
