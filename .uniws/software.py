@@ -36,10 +36,11 @@ class Install(App):
         apps: 'list[App]' = None,
     ) -> 'None':
         super().__call__(args, apps)
+        repo = f'{DIR_TMP}/uniws'
         sh(f'true'
-           f' && rm -rf {DIR_TMP}/dist'
-           f' && python3 -m build -wn {DIR_TMP}'
-           f' && pip3 install --no-deps --force-reinstall {DIR_TMP}/dist/*'
+           f' && rm -rf {repo}/dist'
+           f' && python3 -m build -wn {repo}'
+           f' && pip3 install --no-deps --force-reinstall {repo}/dist/*'
            f';')
 
 
@@ -53,8 +54,7 @@ class Release(App):
         config = toml.load(f'{DIR_TMP}/pyproject.toml')
         version = config['project']['version']
         root = f'{DIR_TMP}/uniws-ws'
-        tmp = f'{root}/tmp'
-        repo = f'{tmp}/uniws'
+        repo = f'{root}/tmp/uniws'
         sh(f'true'
            f' && rm -rf {root}'
            f' && git clone'
@@ -66,7 +66,7 @@ class Release(App):
            f' && git -C {root} push --tags'
            f' && git -C {repo} tag {version}'
            f' && git -C {repo} push --tags'
-           f' && rm -rf {tmp}/dist'
-           f' && python3 -m build -wn {tmp}'
-           f' && twine upload -r pypi {tmp}/dist/*'
+           f' && rm -rf {repo}/dist'
+           f' && python3 -m build -wn {repo}'
+           f' && twine upload -r pypi {repo}/dist/*'
            f';')
