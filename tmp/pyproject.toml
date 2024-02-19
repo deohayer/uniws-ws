@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "uniws"
 description = "Python CLI and API for a uniform workspace"
-version = "0.5.0"
+version = "0.5.1"
 readme = "uniws/README.md"
 license = {file = "uniws/LICENSE"}
 requires-python = ">= 3.6"
