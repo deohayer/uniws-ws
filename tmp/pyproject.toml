@@ -57,19 +57,16 @@ include = [
 ]
 
 [project.scripts]
-uniws = "uniws.uniws:uniws"
+uws = "uniws.uniws:uws"
 uhc = "uniws.uniws:uhc"
 uhp = "uniws.uniws:uhp"
 uhu = "uniws.uniws:uhu"
 uhd = "uniws.uniws:uhd"
 uhs = "uniws.uniws:uhs"
-uhw = "uniws.uniws:uhw"
 uha = "uniws.uniws:uha"
-usf = "uniws.uniws:usf"
+usd = "uniws.uniws:usd"
 usb = "uniws.uniws:usb"
 usi = "uniws.uniws:usi"
 ust = "uniws.uniws:ust"
-usr = "uniws.uniws:usr"
 usc = "uniws.uniws:usc"
-usp = "uniws.uniws:usp"
 usa = "uniws.uniws:usa"

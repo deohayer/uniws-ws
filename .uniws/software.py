@@ -8,11 +8,10 @@ def software() -> 'list[Software]':
 
 class Workspace(Software):
     def __init__(self) -> 'None':
-        super().__init__(name='uniws',
-                         help='Work with uniws.')
-        self.fetch = Fetch()
-        self.install = Install()
-        self.release = Release()
+        super().__init__('')
+        self.app_download = Fetch()
+        self.app_install = Install()
+        self.app_action = Release()
 
 
 class Fetch(App):
@@ -21,7 +20,6 @@ class Fetch(App):
         args: 'dict[Arg]' = None,
         apps: 'list[App]' = None,
     ) -> 'None':
-        super().__call__(args, apps)
         sh(f'true'
            f' && git -C {DIR_UWS} checkout develop'
            f' && git -C {DIR_UWS} submodule update --init'
@@ -35,7 +33,6 @@ class Install(App):
         args: 'dict[Arg]' = None,
         apps: 'list[App]' = None,
     ) -> 'None':
-        super().__call__(args, apps)
         sh(f'true'
            f' && rm -rf {DIR_TMP}/dist'
            f' && python3 -m build -wn {DIR_TMP}'
@@ -49,7 +46,6 @@ class Release(App):
         args: 'dict[Arg]' = None,
         apps: 'list[App]' = None,
     ) -> 'None':
-        super().__call__(args, apps)
         config = toml.load(f'{DIR_TMP}/pyproject.toml')
         version = config['project']['version']
         root = f'{DIR_TMP}/uniws-ws'
