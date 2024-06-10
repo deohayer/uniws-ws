@@ -1,20 +1,20 @@
 *
 
+!.gitattributes
 !.gitignore
 !.gitmodules
-!README.md
-!.sh
+
 !.uniws
-!.uniws/**
-!bin
-!bin/**
-!etc
-!etc/**
-!lib
-!lib/**
-!tmp
-!tmp/**
+!.uniws/*.py
+!.uniws/*.sh
+
+!README.md
 
 !LICENSE
 !.vscode
 !.vscode/**
+!code
+!code/uniws
+!code/pyproject.toml
+!test
+!test/**

@@ -1,7 +1,0 @@
-*
-
-!.gitignore
-!test
-!test/Dockerfile
-!test/*.py
-!test/test_**
