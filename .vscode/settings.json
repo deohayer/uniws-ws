@@ -1,6 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/tmp",
-        "${workspaceFolder}/tmp/uniws/template/.uniws"
+        "${workspaceFolder}/code",
+        "${workspaceFolder}/code/uniws/template/.uniws"
     ]
 }
