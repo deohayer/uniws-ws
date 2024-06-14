@@ -12,9 +12,12 @@ def check_0000(capfd, cmd):
     out, err = capfd.readouterr()
     assert err == ''
     assert out == (
-        f'{COMMAND}\n'
+        f'{COMMAND} [ARGS]...\n'
         f'\n'
         f'{HELP}\n'
+        f'\n'
+        f'Positional arguments:\n'
+        f'  [ARGS]...    Arguments for the action.\n'
         f'\n'
         f'Optional arguments:\n'
         f'  -h/--help    Show the help text and exit.\n'
@@ -32,16 +35,18 @@ def test_0000(capfd):
 
 
 def check_0001(capfd, cmd):
-    # Implicit.
     dir = f'{dir_home()}/{os.path.basename(__file__)}_0001'
     check_setup(dir)
     sh(f'cd {dir} && {cmd} -h')
     out, err = capfd.readouterr()
     assert err == ''
     assert out == (
-        f'{COMMAND}\n'
+        f'{COMMAND} [ARGS]...\n'
         f'\n'
         f'{HELP}\n'
+        f'\n'
+        f'Positional arguments:\n'
+        f'  [ARGS]...    Arguments for the action.\n'
         f'\n'
         f'Optional arguments:\n'
         f'  -h/--help    Show the help text and exit.\n'
@@ -50,7 +55,18 @@ def check_0001(capfd, cmd):
     sh(f'cd {dir} && {cmd}')
     out, err = capfd.readouterr()
     assert err == ''
-    assert out == 'Hardware: \n'
+    assert out == (
+        'Action: \n'
+    )
+    sh(f'cd {dir} && {cmd} 1 "a b c" -e')
+    out, err = capfd.readouterr()
+    assert err == ''
+    assert out == (
+        'Action: \n'
+        'Argument: 1\n'
+        'Argument: a b c\n'
+        'Argument: -e\n'
+    )
 
 
 def test_0001(capfd):
@@ -59,7 +75,7 @@ def test_0001(capfd):
 
 
 def check_0002(capfd, cmd):
-    # Explicit.
+    # Component.
     filename = os.path.basename(__file__).split('.')[0]
     dir = f'{dir_home()}/{filename}_0002'
     check_setup(dir, f'{os.path.dirname(__file__)}/{filename}/0002')
@@ -67,28 +83,35 @@ def check_0002(capfd, cmd):
     out, err = capfd.readouterr()
     assert err == ''
     assert out == (
-        f'{COMMAND} HW\n'
+        f'{COMMAND} ACTION [ARGS]...\n'
         f'\n'
         f'{HELP}\n'
         f'\n'
         f'Positional arguments:\n'
-        f'  HW    A hardware to use.\n'
-        f'        Allowed values:\n'
-        f'         * hardware1\n'
-        f'         * hardware2 - Hardware number 2\n'
+        f'  ACTION       The action to perform.\n'
+        f'               Allowed values:\n'
+        f'                * action1\n'
+        f'                * action2 - the second action\n'
+        f'  [ARGS]...    Arguments for the action.\n'
         f'\n'
         f'Optional arguments:\n'
         f'  -h/--help    Show the help text and exit.\n'
         f'\n'
     )
-    sh(f'cd {dir} && {cmd} hardware1')
+    sh(f'cd {dir} && {cmd} action1')
     out, err = capfd.readouterr()
     assert err == ''
-    assert out == 'Hardware: hardware1\n'
-    sh(f'cd {dir} && {cmd} hardware2')
+    assert out == (
+        'Action: action1\n'
+    )
+    sh(f'cd {dir} && {cmd} action2 1 "2 3"')
     out, err = capfd.readouterr()
     assert err == ''
-    assert out == 'Hardware: hardware2\n'
+    assert out == (
+        'Action: action2\n'
+        'Argument: 1\n'
+        'Argument: 2 3\n'
+    )
 
 
 def test_0002(capfd):

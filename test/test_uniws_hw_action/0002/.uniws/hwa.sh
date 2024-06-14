@@ -1,20 +1,28 @@
 #!/bin/bash
 
-# $1 - a request: '?' - list hardware, '!' - execute the command.
-# $2 - a hardware entry to use, if there are multiple.
+# $1 - a request: '?' - list actions, '!' - execute the command.
+# $2 - an action to perform. If empty, a single action is assumed.
+# $@ - the action's arguments, if any.
 
 set -e
-DIR="$(dirname "${BASH_SOURCE[0]}")"
+ROOT="$(realpath $(dirname "${BASH_SOURCE[0]}")/..)"
 
 if [[ $1 == '?' ]]; then
-    # TODO: Populate the hardware, if any.
-    LIST=('hardware1' 'hardware2 Hardware number 2')
+    # TODO: Populate the actions, if any.
+    LIST=(
+        'action1'
+        'action2 the second action'
+    )
     for ITEM in "${LIST[@]}"; do
         echo ${ITEM}
     done
 fi
 
 if [[ $1 == '!' ]]; then
+    LIST=("${@:3}")
     # TODO: Perform an action.
-    echo "Hardware: $2"
+    echo "Action: $2"
+    for ITEM in "${LIST[@]}"; do
+        echo "Argument: ${ITEM}"
+    done
 fi
