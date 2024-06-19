@@ -4,6 +4,7 @@ from .helpers import *
 def assert_layout(dir: 'str'):
     files = {
         f'.uniws/__init__.py': 0o644,
+        f'.uniws/.bashrc': 0o644,
         f'.uniws/hardware.py': 0o644,
         f'.uniws/hwc.sh': 0o755,
         f'.uniws/hwp.sh': 0o755,
