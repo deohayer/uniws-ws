@@ -72,7 +72,7 @@ def check_0002(capfd, cmd):
         f'\n'
         f'Positional arguments:\n'
         f'  [SW...]    A list of components to work with.\n'
-        f'             If not specified, the entire workspace is assumed\n'
+        f'             If not specified, the entire workspace is assumed.\n'
         f'             Allowed values:\n'
         f'              * component1\n'
         f'              * component2 - the second component\n'
